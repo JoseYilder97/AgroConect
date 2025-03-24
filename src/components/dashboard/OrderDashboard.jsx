@@ -2,9 +2,17 @@ import { useState } from 'react';
 import '../../stylesdshboard.css';
 import Navegation from './Navegation';
 import TopNavegatio from './TopNavegatio';
-import UserTable from './UserTable';
 
-export default function User() {
+import Dashboard from './Dashboard';
+import DataTable from './DataTable';
+
+export default function OrderDashboard() {
+
+  const initialData = [
+    { id: 1, name: 'Usuario 1', description: 'Descripción del usuario', type: 'Usuario' },
+    { id: 2, name: 'Usuario 2', description: 'Descripción del usuario', type: 'Usuario' },
+  ];
+
   const [isActive, setIsActive] = useState(false);
 
   const toggleMenu = () => {
@@ -20,7 +28,7 @@ export default function User() {
         {/* Pasar el estado y la función toggleMenu a TopNavegatio */}
         <TopNavegatio isActive={isActive} toggleMenu={toggleMenu} />
         <div className="informacion">
-          <UserTable />   
+         <DataTable initialData={initialData} entityType="Pedido" />
         </div>
       </div>
     </div>

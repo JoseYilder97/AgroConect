@@ -1,8 +1,8 @@
 
 import PropTypes from 'prop-types';
 
-import dogLogoDashboard from '../../../public/images/logo-conect.png';
-import { FaHome, FaUsers, FaMarker, FaProductHunt, FaCog, FaKey, FaSignOutAlt } from 'react-icons/fa';
+import dogLogoDashboard from '../../../public/images/logo.png';
+import { FaHome, FaUsers, FaMarker, FaProductHunt, FaCog, FaKey, FaSignOutAlt, FaClipboardList, FaBox, FaClipboardCheck, FaEnvelope, FaChartBar } from 'react-icons/fa';
 import SettingsModal from './SettingsModal';
 import { useState } from 'react';
 import DynamicModal from './DynamicModal';
@@ -46,18 +46,21 @@ const Navegation = ({ isActive }) => {
         </a> */}
       </div>
 
-      <ul>
-        <MenuItem icon={<FaHome />} title="Tablero" link="/dashboard" />
-        <MenuItem icon={<FaUsers />} title="Usuarios" link="/User" />
-        <MenuItem icon={<FaMarker />} title="Producto" link="/Product" />
-        <MenuItem icon={<FaProductHunt />} title="Clientes" link="/Customer" />
-        <div className="li_items">
-            <MenuItem icon={<FaCog />} title="Perfil" onClick={() => openModal('profile')} />
-            <MenuItem icon={<FaKey />} title="Seguridad" onClick={() => openModal('security')} />
-            <MenuItem icon={<FaSignOutAlt />} title="Abaut" onClick={() => openModal('about')} />
-            <MenuItem icon={<FaSignOutAlt />} title="Sign Out" onClick={() => openModal('language')} />
+        <ul>
+          <MenuItem icon={<FaHome />} title="Tablero" link="/dashboard" />
+          <MenuItem icon={<FaUsers />} title="Usuarios" link="/UserDashboard" />
+          <MenuItem icon={<FaBox />} title="Producto" link="/ProductDashboard" />
+          <MenuItem icon={<FaClipboardList />} title="Pedido" link="/OrderDashboard" />
+          <MenuItem icon={<FaClipboardCheck />} title="Detalle Pedido" link="/OrderDetailDashboard" />
+          <MenuItem icon={<FaEnvelope />} title="Mensajes" link="/MessageDashboard" />
+          <MenuItem icon={<FaChartBar />} title="Reportes" link="/ReportDashboard" />
+          <div className="li_items">
+              <MenuItem icon={<FaCog />} title="Perfil" onClick={() => openModal('profile')} />
+              <MenuItem icon={<FaKey />} title="Seguridad" onClick={() => openModal('security')} />
+              <MenuItem icon={<FaSignOutAlt />} title="Abaut" onClick={() => openModal('about')} />
+              <MenuItem icon={<FaSignOutAlt />} title="Sign Out" onClick={() => openModal('language')} />
           </div>
-      </ul>
+        </ul>
     </nav>
     {isModalOpen && <DynamicModal closeModal={closeModal} content={modalContent} />}
         </>

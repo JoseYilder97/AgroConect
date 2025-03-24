@@ -1,16 +1,18 @@
-
-
 import { useState } from 'react';
 import '../../stylesdshboard.css';
-import CarInfoUser from './CarInfoUser';
-import CardBodyTable from './CardBodyTable';
-import CardInfoMarkeplace from './CardInfoMarkeplace';
 import Navegation from './Navegation';
 import TopNavegatio from './TopNavegatio';
-import Product from './ProductDashboard';
-import CustomerTable from './CustomerTable';
 
-export default function Customer() {
+import Dashboard from './Dashboard';
+
+export default function MessageDashboard() {
+
+  const initialData = [
+    { id: 1, name: 'Producto 1', description: 'Descripción del producto', type: 'Producto' },
+    { id: 2, name: 'Producto 2', description: 'Descripción del producto', type: 'Producto' },
+  ];
+
+
   const [isActive, setIsActive] = useState(false);
 
   const toggleMenu = () => {
@@ -26,8 +28,7 @@ export default function Customer() {
         {/* Pasar el estado y la función toggleMenu a TopNavegatio */}
         <TopNavegatio isActive={isActive} toggleMenu={toggleMenu} />
         <div className="informacion">
-        
-          <CustomerTable />
+         <Dashboard initialData={initialData} entityType="Mensajes " />
         </div>
       </div>
     </div>

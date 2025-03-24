@@ -1,4 +1,4 @@
-import dogLogo from '../../public/images/logo-conect.png';
+import dogLogo from '../../public/images/logo.png';
 
 import { FaCalendarDay ,FaHome,FaUser,/* FaPhoneAlt */ FaStore   } from 'react-icons/fa';
 

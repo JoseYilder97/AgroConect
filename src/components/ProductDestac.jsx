@@ -1,5 +1,5 @@
 /* import React from "react"; */
-import dogStar from '../../public/images/agricola.png'
+import dogStar from '../../public/images/logo.png'
 
 
 import "../index.css";

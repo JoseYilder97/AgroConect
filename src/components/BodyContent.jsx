@@ -1,4 +1,4 @@
-import dogLogo from '../../public/images/agricola.png'
+import dogLogo from '../../public/images/logo.png'
 
 
 import "../index.css";

@@ -7,9 +7,12 @@ import Profile from './components/dashboard/Profile'
 
 import "./index.css";
 import UserTable from "./components/dashboard/UserTable";
-import User from "./components/dashboard/User";
-import Product from "./components/dashboard/Product";
-import Customer from "./components/dashboard/Customer";
+import UserDashboard from "./components/dashboard/UserDashboard";
+import ProductDashboard from "./components/dashboard/ProductDashboard";
+import OrderDashboard from "./components/dashboard/OrderDashboard";
+import OrderDetailDashboard from "./components/dashboard/OrderDetailDashboard";
+import MessageDashboard from "./components/dashboard/MessageDashboard";
+import ReportDashboard from "./components/dashboard/ReportDashboard";
 import Settings from "./components/dashboard/Settings";
 import SettingsModal from "./components/dashboard/SettingsModal";
 
@@ -23,9 +26,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/Dashboard" element={<Dashboard/>} />
-        <Route path="/User" element={<User/>} />
-        <Route path="/Product" element={<Product />} />
-        <Route path="/Customer" element={<Customer />} />
+        <Route path="/UserDashboard" element={<UserDashboard/>} />
+        
+        <Route path="/ProductDashboard" element={<ProductDashboard />} />
+        <Route path="/OrderDashboard" element={<OrderDashboard />} />
+        <Route path="/OrderDetailDashboard" element={<OrderDetailDashboard />} />
+        <Route path="/MessageDashboard" element={<MessageDashboard />} />
+        <Route path="/ReportDashboard" element={<ReportDashboard />} />
         <Route path="/Settings" element={<Settings/>} />
         <Route path="/SettingsModal" element={<SettingsModal/>} />
         <Route path="/Profile" element={<Profile />} />

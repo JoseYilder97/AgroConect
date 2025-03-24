@@ -175,7 +175,7 @@ html {
   position: relative;
   justify-content: center;
   align-items: center;
-  height: max-content;
+  height: 100%;
   width: 30rem;
   left: 4rem;
 }
@@ -185,7 +185,7 @@ html {
 .navbars .logos picture {
   width: 100%;
   padding-top: 2rem;
-  height: 90%;
+  height: 100%;
 }
 
 .navbars .logos img {

@@ -2,10 +2,17 @@ import { useState } from 'react';
 import '../../stylesdshboard.css';
 import Navegation from './Navegation';
 import TopNavegatio from './TopNavegatio';
-import UserTable from './UserTable';
-import ProductTable from './ProductTable';
 
-export default function Product() {
+import Dashboard from './Dashboard';
+
+export default function ReportDashboard() {
+
+  const initialData = [
+    { id: 1, name: 'Producto 1', description: 'Descripción del producto', type: 'Producto' },
+    { id: 2, name: 'Producto 2', description: 'Descripción del producto', type: 'Producto' },
+  ];
+
+
   const [isActive, setIsActive] = useState(false);
 
   const toggleMenu = () => {
@@ -21,7 +28,7 @@ export default function Product() {
         {/* Pasar el estado y la función toggleMenu a TopNavegatio */}
         <TopNavegatio isActive={isActive} toggleMenu={toggleMenu} />
         <div className="informacion">
-          <ProductTable />   
+         <Dashboard initialData={initialData} entityType="Reportes" />
         </div>
       </div>
     </div>
