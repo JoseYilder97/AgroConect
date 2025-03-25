@@ -15,6 +15,7 @@ import MessageDashboard from "./components/dashboard/MessageDashboard";
 import ReportDashboard from "./components/dashboard/ReportDashboard";
 import Settings from "./components/dashboard/Settings";
 import SettingsModal from "./components/dashboard/SettingsModal";
+import Marketplace from "./components/Marketplace";
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
 
     <Router>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Marketplace/>} />
         <Route path="/Dashboard" element={<Dashboard/>} />
         <Route path="/UserDashboard" element={<UserDashboard/>} />
         

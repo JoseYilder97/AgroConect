@@ -5,6 +5,9 @@ import  Carousel from "./Carousel";
 
 
 import "../style.css";
+import SectionImages from "./SectionImages";
+import MarketplaceImageCarousel from "./marketplace/MarketplaceImageCarousel";
+import DiscountBanner from "./marketplace/DiscountBanner";
 const categories = [
   "Fresh Meat",
   "Vegetables",
@@ -22,6 +25,14 @@ const image = [
   "../../public/images/verdura.jpg",
   "../../public/images/verdura1.jpg",
   "../../public/images/verdura2.jpg",
+  "../../public/images/verdura3.jpg",
+  "../../public/images/verdura3.jpg",
+  "../../public/images/verdura3.jpg",
+  "../../public/images/verdura3.jpg",
+  "../../public/images/verdura3.jpg",
+  "../../public/images/verdura3.jpg",
+  "../../public/images/verdura3.jpg",
+  "../../public/images/verdura3.jpg",
   "../../public/images/verdura3.jpg",
 
 
@@ -143,29 +154,22 @@ export default function Marketplace() {
           </div>
         </div>
       </main>
+                <div className="container_info_praci">
+                  <MarketplaceImageCarousel/>
+                </div>
+                <DiscountBanner/>
+    
 
-      {/* Products Section */}
-      <div className="products">
-        <div className="product-card-section">
-          {[1, 2, 3, 4].map((item) => (
-            <div key={item} className="product-card">
-              <img src="https://via.placeholder.com/150" alt="Product" className="product-image" />
-              <h3 className="product-title">Product {item}</h3>
-              <p className="product-prece">$20.00</p>
-              <button className="add-to-cart-button">
-                Add to Cart
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Carousel Section */}
+        <SectionImages />
+
       <div className="carousel-section">
-        <Carousel />
-        <Carousel />
-        <Carousel />
-        <Carousel />
+      <Carousel title="Últimos productos" />
+      <Carousel title="Ofertas especiales" />
+      <Carousel title="Más vendidos" />
+      <Carousel title="Recomendados para ti" />
+
       </div>
     </div>
   );
