@@ -81,7 +81,7 @@ const HeaderNav =() =>{
         </div>
         <div className="navbar-right">
           <span className="material-symbols-outlined"><FaUser /></span>
-          <Link to="/Dashboard">Iniciar sesión</Link>
+          <Link to="/Login">Iniciar sesión</Link>
         </div>
       </div>
     </nav>

@@ -1025,7 +1025,7 @@ h2 {
 
 .items_container_users-admins .items_container_users_admins-login {
   display: grid;
-  width: 10%;
+  width: 25%;
   max-width: 700px;
   height: max-content;
   min-width: 50vh;
@@ -1085,7 +1085,7 @@ h2 {
 }
 
 .items_container_users-admins .items_container_users_admins-login span {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   width: 75%;
   display: flex;
   margin: auto;
@@ -1109,13 +1109,23 @@ h2 {
   outline: none;
   padding: 0 1rem;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   height: 3.5rem;
   border: 1px solid var(--color--second);
   -webkit-border-radius: var(--border--radius-furmulary);
   -moz-border-radius: var(--border--radius-furmulary);
   -ms-border-radius: var(--border--radius-furmulary);
   -o-border-radius: var(--border--radius-furmulary);
+}
+
+.items_container_users-admins .items_container_users_admins-login input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  
+  margin-left: 6.3rem;
+ 
+
 }
 
 .items_container_users-admins .items_container_users_admins-login input[type="submit"] {
@@ -1160,10 +1170,15 @@ h2 {
   padding-left: 0;
   list-style: none;
 }
+.items_container_users_admins-login .user_formulary_ancla ul >p{
+  font-size: 1.3rem;
+  line-height: 1.4;
+  padding: 0 0.5rem;
+}
 
 .items_container_users_admins-login .user_formulary_ancla ul a {
-  text-decoration: none;
-  font-size: 1.5rem;
+  /* text-decoration: none; */
+  font-size: 1.8rem;
   transition: opacity 0.3s ease;
   padding: 5px 10px;
   color: var(--color--second);

@@ -16,6 +16,7 @@ import ReportDashboard from "./components/dashboard/ReportDashboard";
 import Settings from "./components/dashboard/Settings";
 import SettingsModal from "./components/dashboard/SettingsModal";
 import Marketplace from "./components/Marketplace";
+import Login from "./components/Login";
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
 
     <Router>
       <Routes>
-        <Route path="/" element={<Marketplace/>} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/Login" element={<Login/>} />
         <Route path="/Dashboard" element={<Dashboard/>} />
         <Route path="/UserDashboard" element={<UserDashboard/>} />
         
@@ -39,7 +41,7 @@ function App() {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Register" element={<Register/>} />
         <Route path="/UserTable" element={<UserTable/>} />
-        <Route path="/Register" element={<Register/>} />
+
        
       </Routes>
     </Router>
