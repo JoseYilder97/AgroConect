@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import dogLogoDashboard from '../../../public/images/logo.png';
 import { FaHome, FaUsers, FaMarker, FaProductHunt, FaCog, FaKey, FaSignOutAlt, FaClipboardList, FaBox, FaClipboardCheck, FaEnvelope, FaChartBar } from 'react-icons/fa';
-import SettingsModal from './SettingsModal';
+//import SettingsModal from './SettingsModal';
 import { useState } from 'react';
 import DynamicModal from './DynamicModal';
 

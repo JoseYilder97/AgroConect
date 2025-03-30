@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import PropTypes from 'prop-types';
 import { FaTimes } from 'react-icons/fa';
 import '../../stylesdshboard.css'; // Asegúrate de tener los estilos del modal
@@ -12,8 +12,8 @@ const SettingsModal = ({ closeModal }) => {
         </button>
         <h2>Configuraciones</h2>
         <p>Aquí puedes ajustar las configuraciones de tu cuenta.</p>
-        {/* Agrega aquí las configuraciones que desees */}
-        <div className="settings-options">
+        {/* Agrega aquí las configuraciones que desees */
+        /*<div className="settings-options">
           <label>
             <input type="checkbox" />
             Activar notificaciones
@@ -35,3 +35,4 @@ SettingsModal.propTypes = {
 };
 
 export default SettingsModal;
+ */

@@ -1021,11 +1021,12 @@ h2 {
   bottom: 0;
   padding: 0;
   z-index: 100;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.8));
 }
 
 .items_container_users-admins .items_container_users_admins-login {
   display: grid;
-  width: 25%;
+  width: 35%;
   max-width: 700px;
   height: max-content;
   min-width: 50vh;
@@ -1046,7 +1047,7 @@ h2 {
   background-color: rgba(255, 255, 255, 0);
   border-radius: var(--border--radius-furmulary);
   box-shadow: 0 15px 37px var(--box-shadow);
-  background-color: var(--color-image);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.8));
   -webkit-border-radius: var(--border--radius-furmulary);
   -moz-border-radius: var(--border--radius-furmulary);
   -ms-border-radius: var(--border--radius-furmulary);
@@ -1068,11 +1069,103 @@ h2 {
 
 }
 
+.items_container_users-admins .items_container_users_admins-login form .error {
+  color: red;
+  width: max-content;
+  cursor: not-allowed;
+  font-weight: 800;
+  margin: 0 auto;
+  background-color: #ffe6e6;
+  border: 1px solid red;
+  padding: 10px;
+   margin-bottom: 3rem;
+  border-radius: 5px;
+}
+
+.items_container_users-admins .items_container_users_admins-login form .validation-error {
+  color: orange;
+  background-color: #fff4e6;
+  border: 1px solid orange;
+  padding: 10px;
+  cursor: not-allowed;
+   margin-bottom: 3rem;
+  border-radius: 5px;
+}
+
+.items_container_users-admins .items_container_users_admins-login form .success {
+  color: green;
+  width: max-content;
+  font-weight: 800;
+  margin: 0 auto;
+  cursor: not-allowed;
+  background-color: #e6ffe6;
+  border: 1px solid green;
+  padding: 10px;
+   margin-bottom: 3rem;
+  border-radius: 5px;
+}
+
+.items_container_users-admins .items_container_users_admins-login form .error,
+.items_container_users-admins .items_container_users_admins-login form .validation-error,
+.items_container_users-admins .items_container_users_admins-login form .success {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
 .items_container_users-admins .items_container_users_admins-login form {
   position: relative;
   top: 8px;
 }
+/* Contenedor del grupo de formulario */
+.form-group {
+  position: relative;
+  margin-bottom: 2rem;
+}
 
+/* Estilo para los campos de entrada */
+.form-group .input {
+  width: 80%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--color--second);
+  border-radius: var(--border--radius-furmulary);
+  background-color: #fff;
+  color: var(--color--black);
+  font-size: 1.6rem;
+  transition: border-color 0.3s ease;
+  -webkit-border-radius: var(--border--radius-furmulary);
+  -moz-border-radius: var(--border--radius-furmulary);
+  -ms-border-radius: var(--border--radius-furmulary);
+  -o-border-radius: var(--border--radius-furmulary);
+}
+
+/* Estilo para el campo de entrada enfocado */
+.form-group .input:focus {
+  border-color: var(--color--second);
+  outline: none;
+}
+
+/* Estilo para las etiquetas */
+.form-group label {
+  position: absolute;
+  top: 1rem;
+  left: 7rem;
+  color: var(--color-image);
+  font-size: 1.6rem;
+  pointer-events: none;
+  background-color: var(--color--white); /* Fondo blanco para cubrir la línea */
+  padding: 0 0.5rem; /* Espaciado alrededor del texto */
+  transition: transform 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+}
+
+/* Movimiento de la etiqueta cuando el campo está enfocado o tiene un valor */
+.form-group .input:focus ~ label,
+.form-group .input:not(:placeholder-shown) ~ label {
+  transform: translateY(-120%) scale(0.8);
+  color: var(--color--second);
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+/* 
 .items_container_users-admins .items_container_users_admins-login label {
   font-size: 20px;
   width: 100%;
@@ -1083,10 +1176,10 @@ h2 {
   justify-items: center;
   display: block;
 }
-
-.items_container_users-admins .items_container_users_admins-login span {
+ */
+/* .items_container_users-admins .items_container_users_admins-login span {
   font-size: 1.6rem;
-  width: 75%;
+  width: 73%;
   display: flex;
   margin: auto;
   border-radius: var(--border--radius-furmulary);
@@ -1094,13 +1187,14 @@ h2 {
   padding: 0 1rem;
   margin-bottom: 4rem;
   height: 3.5rem;
+  font-weight: bold;
   color: var(--color--second);
   align-items: center;
   cursor: pointer;
   margin-bottom: 0;
 }
-
-.items_container_users-admins .items_container_users_admins-login input {
+ */
+/* .items_container_users-admins .items_container_users_admins-login input,select {
   font-size: 1.5rem;
   width: 70%;
   display: flex;
@@ -1110,21 +1204,36 @@ h2 {
   padding: 0 1rem;
   align-items: center;
   margin-bottom: 2rem;
-  height: 3.5rem;
+  height: 4rem;
   border: 1px solid var(--color--second);
   -webkit-border-radius: var(--border--radius-furmulary);
   -moz-border-radius: var(--border--radius-furmulary);
   -ms-border-radius: var(--border--radius-furmulary);
   -o-border-radius: var(--border--radius-furmulary);
+} */
+.items_container_users-admins .items_container_users_admins-login .remember_me{
+  display: flex;
+  width: 84%;
+  margin: 0 auto;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  color: var(--color--second);
+
+}
+.items_container_users-admins .items_container_users_admins-login select {
+  width: 84%;
+  height: 4rem;
+ 
 }
 
 .items_container_users-admins .items_container_users_admins-login input[type="checkbox"] {
   width: 1.5rem;
   height: 1.5rem;
   position: relative;
-  
-  margin-left: 6.3rem;
- 
+
+  margin-left: 1.3rem;
+
 
 }
 
@@ -1170,7 +1279,8 @@ h2 {
   padding-left: 0;
   list-style: none;
 }
-.items_container_users_admins-login .user_formulary_ancla ul >p{
+
+.items_container_users_admins-login .user_formulary_ancla ul>p {
   font-size: 1.3rem;
   line-height: 1.4;
   padding: 0 0.5rem;

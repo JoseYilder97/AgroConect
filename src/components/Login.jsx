@@ -1,83 +1,78 @@
 import "../index.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
 function Login() {
-    const [credentials, setCredentials] = useState({
-        username: '',
-        password: ''
-    });
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setCredentials({
-            ...credentials,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = async (e) => {
+    async function handletLogin(e) {
         e.preventDefault();
+        setError('');
+        setSuccessMessage('');
         try {
-            const response = await fetch('http://localhost:8080/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(credentials)
+            const response = await axios.post('http://localhost:8080/api/auth/login', {
+                username,
+                password,
             });
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Login exitoso:', data);
-                // Manejar el éxito (por ejemplo, guardar el token en localStorage)
-            } else {
-                console.error('Error en el login');
+            if (response.data.authStatus === 'LOGIN_SUCCESS') {
+                setSuccessMessage(response.data.errorMessage); // Cambiado a errorMessage
+                localStorage.setItem('token', response.data.token);
+                setTimeout(() => {
+                    navigate('/Marketplace');
+                }, 1000);
             }
         } catch (error) {
-            console.error('Error al conectar con el servidor:', error);
+            if (error.response?.data?.errorMessage) {
+                setError(error.response.data.errorMessage); // Cambiado a errorMessage
+            } else {
+                setError('Error al iniciar sesión');
+            }
+            console.error('Error detallado', error);
         }
-    };
+    }
 
     return (
         <div className="items_container_users-admins">
             <div className="items_container_users_admins-login">
                 <div className="user_formulary">
                     <h4 className="h4">Login</h4>
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="username">
-                            <span className="material-icons">
-                                Username
-                            </span>
+                    <form onSubmit={handletLogin}>
+                        {error && <p className="error">{error}</p>}
+                        {successMessage && <p className="success">{successMessage}</p>}
+
+                        <div className="form-group">
                             <input
                                 name="username"
                                 type="text"
                                 required
                                 className="input"
-                                placeholder="Ingresa tu correo"
-                                value={credentials.username}
-                                onChange={handleChange}
+                                placeholder=" "
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
-                        </label>
-                        <label htmlFor="password">
-                            <span className="material-icons">
-                                Password
-                            </span>
+                            <label htmlFor="username">Ingresa tu correo</label>
+                        </div>
+                        <div className="form-group">
                             <input
                                 type="password"
                                 id="password"
                                 name="password"
                                 required
                                 className="input"
-                                placeholder="Ingresa tu contraseña"
-                                value={credentials.password}
-                                onChange={handleChange}
+                                placeholder=" "
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
-                        </label>
+                            <label htmlFor="password">Ingresa tu contraseña</label>
+                        </div>
+
                         <label htmlFor="remember_me" className="remember_me">
-                            <span className="material-checkbox">
-                                Recordar Contraseña
-                            </span>
+                            <span className="material-checkbox">Recordar Contraseña</span>
                             <input
                                 type="checkbox"
                                 id="remember_me"

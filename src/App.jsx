@@ -14,7 +14,7 @@ import OrderDetailDashboard from "./components/dashboard/OrderDetailDashboard";
 import MessageDashboard from "./components/dashboard/MessageDashboard";
 import ReportDashboard from "./components/dashboard/ReportDashboard";
 import Settings from "./components/dashboard/Settings";
-import SettingsModal from "./components/dashboard/SettingsModal";
+//import SettingsModal from "./components/dashboard/SettingsModal";
 import Marketplace from "./components/Marketplace";
 import Login from "./components/Login";
 
@@ -29,6 +29,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/Login" element={<Login/>} />
         <Route path="/Dashboard" element={<Dashboard/>} />
+        <Route path="/Marketplace" element={<Marketplace/>} />
         <Route path="/UserDashboard" element={<UserDashboard/>} />
         
         <Route path="/ProductDashboard" element={<ProductDashboard />} />
@@ -37,7 +38,7 @@ function App() {
         <Route path="/MessageDashboard" element={<MessageDashboard />} />
         <Route path="/ReportDashboard" element={<ReportDashboard />} />
         <Route path="/Settings" element={<Settings/>} />
-        <Route path="/SettingsModal" element={<SettingsModal/>} />
+        {/* <Route path="/SettingsModal" element={<SettingsModal/>} /> */}
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Register" element={<Register/>} />
         <Route path="/UserTable" element={<UserTable/>} />

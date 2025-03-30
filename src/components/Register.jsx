@@ -1,135 +1,215 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import "../index.css";
 
 function Register() {
-    const [formulario, setFormulario] = useState({
-        name: '',
-        username: '',
-        password: '',
-        email: '',
-        address: '',
-        role: ''
-    });
+    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmpassword, setConfirmPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
+    const [role, setRole] = useState('');
+    const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+
+    const rolesEnum = ["Farmer", "Buyer", "Admin"];
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormulario({
-            ...formulario,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('http://localhost:8080/api/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formulario)
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                alert('Registro exitoso: ' + JSON.stringify(data));
-                // Aquí puedes redirigir al login o realizar otra acción
-            } else {
-                alert('Error en el registro');
-            }
-        } catch (error) {
-            alert('Error al conectar con el servidor: ' + error.message);
+        switch (name) {
+            case 'name':
+                setName(value);
+                break;
+            case 'username':
+                setUsername(value);
+                break;
+            case 'password':
+                setPassword(value);
+                break;
+            case 'confirmpassword':
+                setConfirmPassword(value);
+                break;
+            case 'email':
+                setEmail(value);
+                break;
+            case 'address':
+                setAddress(value);
+                break;
+            case 'role':
+                setRole(value);
+                break;
+            default:
+                break;
         }
     };
+
+    async function Save(e) {
+        e.preventDefault();
+        setError('');
+        setSuccessMessage('');
+
+        // Validación de campos vacíos
+        if (!name || !username || !password || !confirmpassword || !email || !address || !role) {
+            setError('Por favor, completa todos los campos');
+            return;
+        }
+
+        if (password !== confirmpassword) {
+            setError('Las contraseñas no coinciden');
+            return;
+        }
+
+        if (!rolesEnum.includes(role)) {
+            setError('El rol seleccionado no es válido');
+            return;
+        }
+
+        try {
+            const response = await axios.post('http://localhost:8080/api/auth/register', {
+                name,
+                username,
+                password,
+                email,
+                address,
+                role
+            });
+
+            if (response.data.authStatus === 'USER_CREATE_SUCCESSFULLY') {
+                setSuccessMessage(response.data.errorMessage);
+                setTimeout(() => {
+                    window.location = '/login';
+                }, 2000);
+            } else {
+                setError(response.data.errorMessage || 'Error al registrar el usuario');
+            }
+        } catch (error) {
+            console.error('Error de registro:', error.response || error);
+
+            if (error.response?.data?.authStatus === 'USER_NOT_CREATED') {
+                setError(error.response.data.errorMessage || 'Error en el servidor. Por favor, inténtalo nuevamente.');
+            } else {
+                setError('Error al registrar, Por favor, inténtalo más tarde.');
+            }
+        }
+    }
 
     return (
         <div className="items_container_users-admins">
             <div className="items_container_users_admins-login">
                 <div className="user_formulary">
                     <h4 className="h4">Registro</h4>
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="name">
-                            <span>Nombre Completo</span>
+
+                    <form onSubmit={Save}>
+                        {error && <p className="error">{error}</p>}
+                        {successMessage && <p className="success">{successMessage}</p>}
+
+                        <div className="form-group">
                             <input
                                 type="text"
                                 id="name"
                                 name="name"
-                                value={formulario.name}
+                                value={name}
                                 onChange={handleChange}
                                 required
-                                placeholder="Nombre Completo"
+                                placeholder=" "
+                                
                                 className="input"
                             />
-                        </label>
-                        <label htmlFor="username">
-                            <span>Nombre de Usuario</span>
+                            <label htmlFor="name">Nombre Completo</label>
+                        </div>
+
+                        <div className="form-group">
                             <input
                                 type="text"
                                 id="username"
                                 name="username"
-                                value={formulario.username}
+                                value={username}
                                 onChange={handleChange}
                                 required
-                                placeholder="Nombre de Usuario"
+                                placeholder=" "
                                 className="input"
                             />
-                        </label>
-                        <label htmlFor="password">
-                            <span>Contraseña</span>
+                            <label htmlFor="username">Nombre de Usuario</label>
+                        </div>
+
+                        <div className="form-group">
                             <input
                                 type="password"
                                 id="password"
                                 name="password"
-                                value={formulario.password}
+                                value={password}
                                 onChange={handleChange}
                                 required
-                                placeholder="Contraseña"
+                                placeholder=" "
                                 className="input"
                             />
-                        </label>
-                        <label htmlFor="email">
-                            <span>Email</span>
+                            <label htmlFor="password">Contraseña</label>
+                        </div>
+
+                        <div className="form-group">
+                            <input
+                                type="password"
+                                id="confirmpassword"
+                                name="confirmpassword"
+                                value={confirmpassword}
+                                onChange={handleChange}
+                                required
+                                placeholder=" "
+                                className="input"
+                            />
+                            <label htmlFor="confirmpassword">Confirmar Contraseña</label>
+                        </div>
+
+                        <div className="form-group">
                             <input
                                 type="email"
                                 id="email"
                                 name="email"
-                                value={formulario.email}
+                                value={email}
                                 onChange={handleChange}
                                 required
-                                placeholder="Email"
+                                placeholder=" "
                                 className="input"
                             />
-                        </label>
-                        <label htmlFor="address">
-                            <span>Dirección</span>
+                            <label htmlFor="email">Email</label>
+                        </div>
+
+                        <div className="form-group">
                             <input
                                 type="text"
                                 id="address"
                                 name="address"
-                                value={formulario.address}
+                                value={address}
                                 onChange={handleChange}
                                 required
-                                placeholder="Dirección"
+                                placeholder=" "
                                 className="input"
                             />
-                        </label>
-                        <label htmlFor="role">
-                            <span>Rol</span>
-                            <input
-                                list="role"
+                            <label htmlFor="address">Dirección</label>
+                        </div>
+
+                        <div className="form-group">
+                            <select
                                 id="role"
                                 name="role"
-                                value={formulario.role}
+                                value={role}
                                 onChange={handleChange}
-                                placeholder="Rol"
                                 className="input"
                                 required
-                            />
-                            <datalist id="role">
-                                <option>Seleccionar...</option>
-                            </datalist>
-                        </label>
+
+                            >
+                                <option value="" disabled>Seleccionar...</option>
+                                {rolesEnum.map((roleOption) => (
+                                    <option key={roleOption} value={roleOption}>
+                                        {roleOption}
+                                    </option>
+                                ))}
+                            </select>
+                            <label htmlFor="role">Rol</label>
+                        </div>
+
                         <input type="submit" value="Registrar" />
                     </form>
                     <div className="user_formulary_ancla">
