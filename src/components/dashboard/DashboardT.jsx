@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../../stylesdshboard.css';
+import '../../styles/stylesdshboard.css';
 import CarInfoUser from './CarInfoUser';
 import CardBodyTable from './CardBodyTable';
 import CardInfoMarkeplace from './CardInfoMarkeplace';
@@ -22,8 +22,9 @@ export default function DashboardT() {
         {/* Pasar el estado y la función toggleMenu a TopNavegatio */}
         <TopNavegatio isActive={isActive} toggleMenu={toggleMenu} />
         <div className="informacion">
-          <CardBodyTable />
-          <CardInfoMarkeplace />
+         {/*  <CardBodyTable />
+          <CardInfoMarkeplace /> */}
+          
         </div>
       </div>
     </div>

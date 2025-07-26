@@ -14,7 +14,7 @@ import {
     FaHome, FaStore
   } from 'react-icons/fa'
   import { AiOutlineClose } from 'react-icons/ai'
-  
+  import '../../styles/stylesdshboard.css';
 const CardBodyTable = () => {
   return (
     <div className="card-body table-responsive p-0">

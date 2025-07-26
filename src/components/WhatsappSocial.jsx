@@ -2,7 +2,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 
 
 import "../index.css";
- 
+
 
 const WhatsappSocial = () => {
   return (

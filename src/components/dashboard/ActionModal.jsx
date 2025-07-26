@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FaTimes } from 'react-icons/fa';
-import '../../stylesdshboard.css';
+import '../../styles/stylesdshboard.css';
 
 const ActionModal = ({ closeModal, actionType, data, onConfirm }) => {
   const [formData, setFormData] = useState({
@@ -11,7 +11,6 @@ const ActionModal = ({ closeModal, actionType, data, onConfirm }) => {
     description: '',
   });
 
-  // Actualiza formData cuando los datos cambian
   useEffect(() => {
     if (data) {
       setFormData({
@@ -150,9 +149,9 @@ const ActionModal = ({ closeModal, actionType, data, onConfirm }) => {
 
 ActionModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  actionType: PropTypes.string.isRequired, // 'edit', 'delete' o 'add'
-  data: PropTypes.object, // Información del elemento (tipo, nombre, etc.)
-  onConfirm: PropTypes.func.isRequired, // Función para manejar la acción
+  actionType: PropTypes.string.isRequired, 
+  data: PropTypes.object,
+  onConfirm: PropTypes.func.isRequired,
 };
 
 export default ActionModal;

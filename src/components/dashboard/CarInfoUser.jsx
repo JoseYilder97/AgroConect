@@ -15,8 +15,8 @@ import { useState } from 'react'
   FaPhoneAlt, FaStore,
 } from 'react-icons/fa' */
 
-import '../../stylesdshboard.css'
-export default function CarInfoUser () {
+import '../../styles/stylesdshboard.css'
+export default function CarInfoUser() {
   return (
     <div className='cardBox'>
       <div className='card'>

@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import '../../stylesdshboard.css';
+
+import '../../styles/stylesdshboard.css';
 import Navegation from './Navegation';
 import TopNavegatio from './TopNavegatio';
 
-import Dashboard from './Dashboard';
+
 import DataTable from './DataTable';
 
 export default function OrderDashboard() {
@@ -28,7 +29,7 @@ export default function OrderDashboard() {
         {/* Pasar el estado y la función toggleMenu a TopNavegatio */}
         <TopNavegatio isActive={isActive} toggleMenu={toggleMenu} />
         <div className="informacion">
-         <DataTable initialData={initialData} entityType="Pedido" />
+          <DataTable initialData={initialData} entityType="Pedido" />
         </div>
       </div>
     </div>

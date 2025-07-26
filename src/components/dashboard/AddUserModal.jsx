@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import '../../stylesdshboard.css';
+import '../../styles/stylesdshboard.css';
 
 const AddUserModal = ({ closeModal, actionType, data, onConfirm }) => {
   const [formData, setFormData] = useState({
@@ -8,8 +8,6 @@ const AddUserModal = ({ closeModal, actionType, data, onConfirm }) => {
     email: '',
     role: '',
   });
-
-  // Actualiza el formulario cuando los datos cambian
   useEffect(() => {
     if (data) {
       setFormData({
@@ -146,8 +144,8 @@ const AddUserModal = ({ closeModal, actionType, data, onConfirm }) => {
           {actionType === 'add'
             ? 'Agregar Nuevo Usuario'
             : actionType === 'edit'
-            ? 'Editar Usuario'
-            : 'Eliminar Usuario'}
+              ? 'Editar Usuario'
+              : 'Eliminar Usuario'}
         </h2>
         {renderContent()}
       </div>
@@ -157,9 +155,9 @@ const AddUserModal = ({ closeModal, actionType, data, onConfirm }) => {
 
 AddUserModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  actionType: PropTypes.string.isRequired, // 'add', 'edit', 'delete'
-  data: PropTypes.object, // Datos del usuario (para editar o eliminar)
-  onConfirm: PropTypes.func.isRequired, // Función para manejar la acción
+  actionType: PropTypes.string.isRequired, 
+  data: PropTypes.object,
+  onConfirm: PropTypes.func.isRequired,
 };
 
 export default AddUserModal;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../../stylesdshboard.css';
+import '../../styles/stylesdshboard.css';
 import Navegation from './Navegation';
 import TopNavegatio from './TopNavegatio';
 
@@ -28,7 +28,7 @@ export default function MessageDashboard() {
         {/* Pasar el estado y la función toggleMenu a TopNavegatio */}
         <TopNavegatio isActive={isActive} toggleMenu={toggleMenu} />
         <div className="informacion">
-         <Dashboard initialData={initialData} entityType="Mensajes " />
+          <Dashboard initialData={initialData} entityType="Mensajes " />
         </div>
       </div>
     </div>

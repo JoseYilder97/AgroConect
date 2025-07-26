@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../../stylesdshboard.css';
+import '../../styles/stylesdshboard.css';
 import Navegation from './Navegation';
 import TopNavegatio from './TopNavegatio';
 
@@ -7,11 +7,11 @@ import Dashboard from './Dashboard';
 
 export default function OrderDetailDashboard() {
 
-    const initialData = [
-        { id: 1, name: 'Detalle 1', description: 'Descripción del detalle', type: 'DetallePedido' },
-        { id: 2, name: 'Detalle 2', description: 'Descripción del detalle', type: 'DetallePedido' },
-      ];
-    
+  const initialData = [
+    { id: 1, name: 'Detalle 1', description: 'Descripción del detalle', type: 'DetallePedido' },
+    { id: 2, name: 'Detalle 2', description: 'Descripción del detalle', type: 'DetallePedido' },
+  ];
+
 
   const [isActive, setIsActive] = useState(false);
 
@@ -28,7 +28,7 @@ export default function OrderDetailDashboard() {
         {/* Pasar el estado y la función toggleMenu a TopNavegatio */}
         <TopNavegatio isActive={isActive} toggleMenu={toggleMenu} />
         <div className="informacion">
-         <Dashboard initialData={initialData} entityType="Detalle Dedido" />
+          <Dashboard initialData={initialData} entityType="Detalle Dedido" />
         </div>
       </div>
     </div>

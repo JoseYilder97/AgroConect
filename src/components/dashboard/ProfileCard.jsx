@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../../styles/stylesdshboard.css';
 const ProfileCard = () => {
   return (
     <div className="profile-card">

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import '../../styles/stylesdshboard.css';
 const UpgradePlan = () => {
   return (
     <div className="upgrade-plan">

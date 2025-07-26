@@ -1,13 +1,8 @@
 
-
 import { useState } from 'react';
-import '../../stylesdshboard.css';
-import CarInfoUser from './CarInfoUser';
-import CardBodyTable from './CardBodyTable';
-import CardInfoMarkeplace from './CardInfoMarkeplace';
+import '../../styles/stylesdshboard.css';
 import Navegation from './Navegation';
 import TopNavegatio from './TopNavegatio';
-import Product from './ProductDashboard';
 import CustomerTable from './CustomerTable';
 
 export default function Customer() {
@@ -18,15 +13,13 @@ export default function Customer() {
   };
 
   return (
-    <div className={`container_dash ${isActive ? 'active' : ''}`}>
-      {/* Pasar el estado y la función toggleMenu a Navegation */}
+    <div className={`container_dash ${isActive ? 'active' : ''}`}>   
       <Navegation isActive={isActive} toggleMenu={toggleMenu} />
 
       <div className={`main ${isActive ? 'active' : ''}`}>
-        {/* Pasar el estado y la función toggleMenu a TopNavegatio */}
         <TopNavegatio isActive={isActive} toggleMenu={toggleMenu} />
         <div className="informacion">
-        
+
           <CustomerTable />
         </div>
       </div>

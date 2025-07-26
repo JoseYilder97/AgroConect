@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import DataTable from './DataTable';
 import ActionModal from './ActionModal';
-
+import '../../styles/stylesdshboard.css';
 const Dashboard = ({ initialData, entityType }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalAction, setModalAction] = useState('');

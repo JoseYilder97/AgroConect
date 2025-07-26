@@ -1,53 +1,67 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from './components/Home'
-import Dashboard from './components/Dashboard'
-import Register from './components/Register'
-import Profile from './components/dashboard/Profile'
-
 import "./index.css";
-import UserTable from "./components/dashboard/UserTable";
+import Home from './components/home/Home';
+import Login from "./components/auth/Login";
+import Register from './components/auth/Register';
+import Marketplace from "./components/marketplace/Marketplace";
+import Dashboard from './components/Dashboard';
 import UserDashboard from "./components/dashboard/UserDashboard";
 import ProductDashboard from "./components/dashboard/ProductDashboard";
+import PrivateRoute from './components/auth/PrivateRoute';
+import { CartProvider } from './components/marketplace/CartContext ';
+/*
+
+import Profile from './components/dashboard/Profile'
+
+import UserTable from "./components/dashboard/UserTable";
 import OrderDashboard from "./components/dashboard/OrderDashboard";
 import OrderDetailDashboard from "./components/dashboard/OrderDetailDashboard";
 import MessageDashboard from "./components/dashboard/MessageDashboard";
 import ReportDashboard from "./components/dashboard/ReportDashboard";
 import Settings from "./components/dashboard/Settings";
-//import SettingsModal from "./components/dashboard/SettingsModal";
-import Marketplace from "./components/Marketplace";
-import Login from "./components/Login";
+import SettingsModal from "./components/dashboard/SettingsModal";
+ */
+import { AuthProvider } from "./components/auth/AuthContext";
 
 
 function App() {
 
 
   return (
-
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/Login" element={<Login/>} />
-        <Route path="/Dashboard" element={<Dashboard/>} />
-        <Route path="/Marketplace" element={<Marketplace/>} />
-        <Route path="/UserDashboard" element={<UserDashboard/>} />
-        
-        <Route path="/ProductDashboard" element={<ProductDashboard />} />
-        <Route path="/OrderDashboard" element={<OrderDashboard />} />
-        <Route path="/OrderDetailDashboard" element={<OrderDetailDashboard />} />
-        <Route path="/MessageDashboard" element={<MessageDashboard />} />
-        <Route path="/ReportDashboard" element={<ReportDashboard />} />
-        <Route path="/Settings" element={<Settings/>} />
-        {/* <Route path="/SettingsModal" element={<SettingsModal/>} /> */}
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/Register" element={<Register/>} />
-        <Route path="/UserTable" element={<UserTable/>} />
-
-       
-      </Routes>
-    </Router>
-
- )
+      <AuthProvider>
+        <Router>
+          <CartProvider> 
+            <Routes>
+  
+              <Route path="/" element={<Home />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Register" element={<Register />} />
+              
+              <Route path="/Marketplace" element={<Marketplace />} />
+              <Route path="/Dashboard" element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              } />
+              <Route path="/UserDashboard" element={<UserDashboard />} />
+              <Route path="/ProductDashboard" element={<PrivateRoute><ProductDashboard /></PrivateRoute>} />
+              
+              {/* 
+              <Route path="/OrderDashboard" element={<OrderDashboard />} />
+              <Route path="/OrderDetailDashboard" element={<OrderDetailDashboard />} />
+              <Route path="/MessageDashboard" element={<MessageDashboard />} />
+              <Route path="/ReportDashboard" element={<ReportDashboard />} />
+              <Route path="/Settings" element={<Settings/>} />
+              {/* <Route path="/SettingsModal" element={<SettingsModal/>} /> */}
+              {/* <Route path="/Profile" element={<Profile />} />
+              <Route path="/UserTable" element={<UserTable/>} /> */}
+              
+            </Routes>
+          </CartProvider>
+        </Router>
+      </AuthProvider>
+    );
 }
 
 export default App

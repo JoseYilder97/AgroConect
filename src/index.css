@@ -8,7 +8,7 @@
 
 :root {
   --color--primary: rgb(255, 255, 255);
-  --color--second: rgb(25, 78, 36);
+  --color--second: rgb(22, 163, 74);
   --color-image: gainsboro;
   --color--major_secund: #f5f5f5;
   --color--shopping: rgb(38, 38, 38);
@@ -23,7 +23,7 @@
   --transparent: rgba(0, 0, 0, 57);
   --transparent-shop-add: rgba(206, 203, 203, 0.42);
   --box-shadow: #00000066;
-  --color--cyan-bluish-gray: rgb(171, 184, 195);
+  --color--cyan-bluish-gray: rgb(45, 46, 47);
   --color--vivid-green-whatsapp: #25d366;
   --color--pale-pink: #f78da7;
   --color--vivid-red: #cf2e2e;
@@ -147,7 +147,7 @@ html {
 
 .navbar-right a {
   color: var(--color--white);
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   padding: 1rem 2rem;
   text-decoration: none;
   gap: 2;
@@ -991,7 +991,7 @@ h4 {
   z-index: -1;
 }
 
-.text_welcome_software h1,
+/* .text_welcome_software h1,
 h2 {
   color: var(--color--white);
   position: relative;
@@ -1002,7 +1002,7 @@ h2 {
   font-weight: 300;
   font-size: 4rem;
   margin-bottom: 1.5rem;
-}
+} */
 
 /* ============usuarios y los user_formulary============= */
 .items_container_users-admins {
@@ -1011,7 +1011,7 @@ h2 {
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  height: 100vh;
+  height: 92vh;
   min-height: max-content;
   position: relative;
   overflow: hidden;
@@ -1035,7 +1035,13 @@ h2 {
   position: relative;
 
 }
+.items_container_users-admins .items_container_users_admins-login .user_formulary > .form{
+    display: grid;
+    width: 100%;
+    max-width: 700px;
+    height: 35vh;
 
+}
 .items_container_users-admins .items_container_users_admins-login .user_formulary {
   display: grid;
   width: 100%;
@@ -1044,10 +1050,10 @@ h2 {
   text-align: center;
   margin: auto;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: var(--color--white);
   border-radius: var(--border--radius-furmulary);
   box-shadow: 0 15px 37px var(--box-shadow);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.8));
+  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.8)); */
   -webkit-border-radius: var(--border--radius-furmulary);
   -moz-border-radius: var(--border--radius-furmulary);
   -ms-border-radius: var(--border--radius-furmulary);
@@ -1061,9 +1067,9 @@ h2 {
   padding: 0 40px;
 
   width: max-content;
-  margin: 3.0rem auto;
+  margin: 1.0rem auto;
   line-height: 2;
-  bottom: 1rem;
+  bottom: 0rem;
   text-transform: uppercase;
   position: relative;
 
@@ -1113,24 +1119,23 @@ h2 {
 
 .items_container_users-admins .items_container_users_admins-login form {
   position: relative;
-  top: 8px;
-}
-/* Contenedor del grupo de formulario */
-.form-group {
-  position: relative;
-  margin-bottom: 2rem;
+  top: 0;
 }
 
-/* Estilo para los campos de entrada */
+.form-group {
+  position: relative;
+  margin-bottom: .2rem;
+}
+
 .form-group .input {
   width: 80%;
   padding: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   border: 1px solid var(--color--second);
   border-radius: var(--border--radius-furmulary);
-  background-color: #fff;
+  background-color: var(--color--white);
   color: var(--color--black);
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   transition: border-color 0.3s ease;
   -webkit-border-radius: var(--border--radius-furmulary);
   -moz-border-radius: var(--border--radius-furmulary);
@@ -1138,32 +1143,36 @@ h2 {
   -o-border-radius: var(--border--radius-furmulary);
 }
 
-/* Estilo para el campo de entrada enfocado */
+
 .form-group .input:focus {
   border-color: var(--color--second);
   outline: none;
 }
 
-/* Estilo para las etiquetas */
+.form-group input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--color--white) inset;
+  box-shadow: 0 0 0px 1000px var(--color--white) inset;
+  -webkit-text-fill-color: var(--color--black); /* Cambiar el color del texto si es necesario */
+}
 .form-group label {
   position: absolute;
-  top: 1rem;
+  top: 1.4rem;
   left: 7rem;
-  color: var(--color-image);
-  font-size: 1.6rem;
+  color: var(--color--second);
+  font-size: 1.5rem;
   pointer-events: none;
-  background-color: var(--color--white); /* Fondo blanco para cubrir la línea */
-  padding: 0 0.5rem; /* Espaciado alrededor del texto */
+  background: var(--color--white);
+  padding: 0 0.5rem; 
   transition: transform 0.3s ease, font-size 0.3s ease, color 0.3s ease;
 }
 
-/* Movimiento de la etiqueta cuando el campo está enfocado o tiene un valor */
+
 .form-group .input:focus ~ label,
 .form-group .input:not(:placeholder-shown) ~ label {
   transform: translateY(-120%) scale(0.8);
   color: var(--color--second);
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
 }
 /* 
 .items_container_users-admins .items_container_users_admins-login label {
@@ -1240,16 +1249,21 @@ h2 {
 .items_container_users-admins .items_container_users_admins-login input[type="submit"] {
   width: 70%;
   position: relative;
-  top: 1rem;
   padding: 5px 10px;
   margin: 0 auto;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
   font-size: 2rem;
+  border: none;
+  border-radius: var(--border--radius-furmulary);
   color: var(--color--white);
   background-color: var(--color--second);
   font-weight: bold;
   height: 4rem;
   transition: opacity 0.3s ease;
+  -webkit-border-radius: var(--border--radius-furmulary);
+  -moz-border-radius: var(--border--radius-furmulary);
+  -ms-border-radius: var(--border--radius-furmulary);
+  -o-border-radius: var(--border--radius-furmulary);
 }
 
 .items_container_users-admins .items_container_users_admins-login input[type="submit"]:hover {
@@ -1266,11 +1280,10 @@ h2 {
   width: 80%;
   display: flex;
   position: relative;
-  top: 1rem;
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
-  margin: 2.5rem auto;
+  margin: .5rem auto;
 }
 
 .items_container_users_admins-login .user_formulary_ancla ul {
@@ -1322,8 +1335,8 @@ h2 {
 .content {
   width: 100%;
   display: flex;
-  background-color: var(--color--shopping);
-  color: var(--color--white);
+  color: var(--color--second);
+  background-color: var(--color--white);
   padding: 3rem 0;
 }
 
@@ -1335,8 +1348,8 @@ h2 {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
 
-  background-color: var(--color--shopping);
-  color: var(--color--white);
+  color: var(--color--second);
+  background-color: var(--color--white);
   justify-content: center;
   align-items: center;
 
@@ -1366,8 +1379,8 @@ h2 {
   display: flex;
 
   justify-content: center;
-  background-color: var(--color--shopping);
-  color: var(--color--white);
+  background-color: var(--color--white);
+  color: var(--color--second);
 }
 
 .wrapper .col1 .dropcap1 {
@@ -1414,8 +1427,8 @@ h2 {
 .content_article {
   width: 100%;
   display: flex;
-  background-color: var(--color--shopping);
-  color: var(--color--white);
+  color: var(--color--second);
+  background-color: var(--color-image);
   padding: 3rem 0;
 }
 
@@ -1455,8 +1468,8 @@ h2 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--color--shopping);
-  color: var(--color--white);
+  color: var(--color--second);
+
 
 }
 
@@ -1472,8 +1485,8 @@ h2 {
   width: 100%;
   height: 100%;
   display: grid;
-  background-color: var(--color--shopping);
-  color: var(--color--white);
+  color: var(--color--shopping);
+
   grid-template-columns: repeat(2, 1fr);
 
 }
@@ -1488,7 +1501,7 @@ h2 {
 .content_article .content_article_wrapper .content_section>.p_secund {
   font-size: 1.5rem;
   font-weight: 200;
-  color: var(--color--white);
+  color: var(--color--black);
   margin: 2rem 0;
 
 }
@@ -1521,8 +1534,8 @@ h2 {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   gap: 2rem;
-  background-color: var(--color--shopping);
-  color: var(--color--white);
+  color: var(--color--shopping);
+  
 
 }
 
@@ -1567,8 +1580,8 @@ h2 {
   display: block;
   width: 40%;
 
-  background-color: var(--color--shopping);
-  color: var(--color--white);
+  color: var(--color--shopping);
+
   font-size: 1.5rem;
   line-height: 1.4;
 
@@ -1785,18 +1798,51 @@ h2 {
   border: solid 4px var(--color--white);
   border-radius: var(--border--radius-furmulary);
 }
+@media (max-width: 1024px) {
+  .navbar-right {
+    width: 40%;
+  }
+  .navbar-right a{
+    font-size: 1rem;
+  }
+  .navbar-right span{
+    display: none;
+  }
+}
 
+/* Tablets y móviles grandes */
+@media (max-width: 768px) {
+  .navbar-right {
+    width: 60%;
+  }
+}
 
+/* Móviles medianos */
+@media (max-width: 480px) {
+  .navbar-right {
+    width: 100%;
+    justify-content: center; /* opcional */
+    text-align: center;      /* opcional */
+  }
+}
+@media (max-width: 768px) {
+  .navbar-right{
+    width: 32%;
+  } 
+
+}
 @media (max-width: 768px) {
   .content_info_wrapper figure {
     max-width: 150px;
-  }
+  } 
+
 }
 
 @media (max-width: 480px) {
   .content_info_wrapper figure {
     max-width: 100%;
   }
+ 
 }
 
 .price {

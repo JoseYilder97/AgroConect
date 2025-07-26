@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../../stylesdshboard.css'
+import '../../styles/stylesdshboard.css'
 const CustomerTable = () => {
   return (
     <div className="table-container">
@@ -15,16 +15,16 @@ const CustomerTable = () => {
           </tr>
         </thead>
         <tbody>
-          
-            <tr >
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <button >Editar</button>
-                <button >Eliminar</button>
-              </td>
-            </tr>
+
+          <tr >
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button >Editar</button>
+              <button >Eliminar</button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import "../index.css";
+import "../../index.css";
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -11,8 +11,8 @@ const NavBar = () => {
         <h1 className="text-xl font-bold">Mi Sitio</h1>
 
         {/* Botón de menú para móviles */}
-        <button 
-          onClick={() => setIsOpen(!isOpen)} 
+        <button
+          onClick={() => setIsOpen(!isOpen)}
           className="md:hidden focus:outline-none"
         >
           {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}

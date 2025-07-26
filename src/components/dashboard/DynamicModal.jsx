@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaTimes } from 'react-icons/fa';
-import '../../stylesdshboard.css'; // Asegúrate de tener los estilos del modal
+import '../../styles/stylesdshboard.css'; // Asegúrate de tener los estilos del modal
 
 const DynamicModal = ({ closeModal, content }) => {
   // Contenido dinámico basado en la prop "content"

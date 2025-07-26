@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import '../../stylesdshboard.css';
+import '../../styles/stylesdshboard.css';
 import Navegation from './Navegation';
 import TopNavigation from './TopNavegatio';
 import DataTable from './DataTable';
@@ -85,8 +85,8 @@ const UserDashboard = ({ data }) => {
       {modalOpen && (
         <AddUserModal
           closeModal={() => setModalOpen(false)}
-          actionType={modalAction} // 'add', 'edit', 'delete'
-          data={modalData} // Datos del usuario (para editar o eliminar)
+          actionType={modalAction} 
+          data={modalData} 
           onConfirm={(action, id, updatedData) => handleConfirm(action, id, updatedData)}
         />
       )}

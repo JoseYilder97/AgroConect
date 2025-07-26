@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../stylesdshboard.css';
+import '../../styles/stylesdshboard.css';
 import { FaUser, FaBell, FaPalette, FaSave } from 'react-icons/fa';
 
 const Settings = () => {

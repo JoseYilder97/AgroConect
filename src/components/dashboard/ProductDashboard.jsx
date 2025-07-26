@@ -1,51 +1,94 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import '../../stylesdshboard.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../../styles/stylesdshboard.css';
 import Navegation from './Navegation';
 import TopNavigation from './TopNavegatio';
 import DataTable from './DataTable';
-import AddUserModal from './AddUserModal';
+import AddProductModal from './AddProductModal';
 
-const UserDashboard = ({ data }) => {
+const ProductDashboard = () => {
   const [isActive, setIsActive] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalAction, setModalAction] = useState('');
   const [modalData, setModalData] = useState(null);
-  const [users, setUsers] = useState(data);
+  const [products, setProducts] = useState([]);
 
   const toggleMenu = () => {
     setIsActive(!isActive);
   };
+  useEffect(() => {
+    axios
+      .get('http://localhost:8084/api/productos')
+      .then((response) => setProducts(response.data))
+      .catch((error) => console.error('Error al obtener productos:', error));
+  }, []);
 
-  const handleAddUser = () => {
+  const handleAddProduct = () => {
     setModalAction('add');
-    setModalData({ type: 'Usuario' });
+    setModalData(null);
     setModalOpen(true);
   };
 
-  const handleEditUser = (user) => {
+  const handleEditProduct = (product) => {
     setModalAction('edit');
-    setModalData({ ...user, type: 'Usuario' });
+    setModalData(product);
     setModalOpen(true);
   };
 
-  const handleDeleteUser = (user) => {
+  const handleDeleteProduct = (product) => {
     setModalAction('delete');
-    setModalData({ ...user, type: 'Usuario' });
+    setModalData(product);
     setModalOpen(true);
   };
 
   const handleConfirm = (action, id, updatedData) => {
-    if (action === 'edit') {
-      setUsers(users.map((user) => (user.id === id ? updatedData : user)));
-      alert(`Usuario con ID ${id} editado.`);
+    if (!updatedData && action !== 'delete') {
+      console.error('Los datos actualizados no están definidos.');
+      return;
+    }
+
+    const formData = new FormData();
+    if (updatedData) {
+      formData.append('nombre', updatedData.name);
+      formData.append('descripcion', updatedData.descripcion);
+      formData.append('precio', updatedData.price);
+      formData.append('stock', updatedData.stock);
+      formData.append('categoria', updatedData.categoria);
+      if (updatedData.imagen) {
+        formData.append('imagen', updatedData.imagen);
+      }
+    }
+
+    if (action === 'add') {
+      axios
+        .post('http://localhost:8084/api/productos/crear', formData)
+        .then((response) => {
+          setProducts((prevProducts) => [...prevProducts, response.data]);
+          alert('Producto agregado exitosamente.');
+        })
+        .catch((error) => console.error('Error al agregar producto:', error));
+    } else if (action === 'edit') {
+      axios
+        .put(`http://localhost:8084/api/productos/actualizar/${id}`, formData)
+        .then((response) => {
+          setProducts((prevProducts) =>
+            prevProducts.map((product) =>
+              product.id === id ? response.data : product
+            )
+          );
+          alert('Producto actualizado exitosamente.');
+        })
+        .catch((error) => console.error('Error al actualizar producto:', error));
     } else if (action === 'delete') {
-      setUsers(users.filter((user) => user.id !== id));
-      alert(`Usuario con ID ${id} eliminado.`);
-    } else if (action === 'add') {
-      const newUser = { id: users.length + 1, ...updatedData };
-      setUsers([...users, newUser]);
-      alert('Nuevo usuario agregado.');
+      axios
+        .delete(`http://localhost:8084/api/productos/eliminar/${id}`)
+        .then(() => {
+          setProducts((prevProducts) =>
+            prevProducts.filter((product) => product.id !== id)
+          );
+          alert('Producto eliminado exitosamente.');
+        })
+        .catch((error) => console.error('Error al eliminar producto:', error));
     }
     setModalOpen(false);
   };
@@ -53,8 +96,10 @@ const UserDashboard = ({ data }) => {
   const columns = [
     { key: 'id', label: 'ID' },
     { key: 'name', label: 'Nombre' },
-    { key: 'email', label: 'Email' },
-    { key: 'role', label: 'Rol' },
+    { key: 'descripcion', label: 'Descripción' },
+    { key: 'price', label: 'Precio' },
+    { key: 'stock', label: 'Stock' },
+    { key: 'category', label: 'Categoría' },
   ];
 
   return (
@@ -64,16 +109,16 @@ const UserDashboard = ({ data }) => {
       <div className={`main ${isActive ? 'active' : ''}`}>
         <TopNavigation isActive={isActive} toggleMenu={toggleMenu} />
         <div className="informacion">
-          <h1>Dashboard de Usuarios</h1>
-          <button className="add-button" onClick={handleAddUser}>
-            + Agregar Usuario
+          <h1>Lista  de Productos</h1>
+          <button className="add-button" onClick={handleAddProduct}>
+            + Agregar Producto
           </button>
-          {users.length > 0 ? (
+          {products.length > 0 ? (
             <DataTable
-              data={users}
+              data={products}
               columns={columns}
-              onEdit={handleEditUser}
-              onDelete={handleDeleteUser}
+              onEdit={handleEditProduct}
+              onDelete={handleDeleteProduct}
             />
           ) : (
             <p>No hay datos disponibles.</p>
@@ -82,10 +127,10 @@ const UserDashboard = ({ data }) => {
       </div>
 
       {modalOpen && (
-        <AddUserModal
+        <AddProductModal
           closeModal={() => setModalOpen(false)}
-          actionType={modalAction} // 'add', 'edit', 'delete'
-          data={modalData} // Datos del usuario (para editar o eliminar)
+          actionType={modalAction}
+          data={modalData}
           onConfirm={(action, id, updatedData) => handleConfirm(action, id, updatedData)}
         />
       )}
@@ -93,19 +138,4 @@ const UserDashboard = ({ data }) => {
   );
 };
 
-UserDashboard.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      role: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
-
-UserDashboard.defaultProps = {
-  data: [],
-};
-
-export default UserDashboard;
+export default ProductDashboard;
